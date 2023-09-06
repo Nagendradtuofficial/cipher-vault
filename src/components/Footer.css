@@ -1,4 +1,8 @@
 .footer{
-    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    min-height: 10vh;
     background-color: aqua;
+    align-items: center;
+    justify-content: center;
 }

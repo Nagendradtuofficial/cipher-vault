@@ -3,9 +3,8 @@ import './Footer.css';
 const Footer = () => {
   return (
     <div className='footer'>
-      <span>© V V S D Nagendra Anala</span>
-      <br></br>
-      <span>© Srijan Saurabh Jha</span>
+      <div>© V V S D Nagendra Anala</div>
+      <div>© Srijan Saurabh Jha</div>
     </div>
   );
 }

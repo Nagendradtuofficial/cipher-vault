@@ -1,3 +1,30 @@
 .home{
-    min-height: 615px;
+    min-height: 80vh;
+}
+
+.input{
+    display: flex;
+    flex-direction: column ;
+    min-width: 35%;
+    margin-right: 5%;
+    margin-left: 10%;
+}
+
+.top{
+    display: flex;
+}
+
+.output{
+    display: flex;
+    min-width: 35%;
+    margin-right: 10%;
+    margin-left: 5%;
+    background-color: rgb(244, 207, 160);
+}
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+    width: 100bw;
+    align-items: center;
 }
