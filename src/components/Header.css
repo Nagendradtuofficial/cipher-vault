@@ -1,4 +1,27 @@
 .header{
     min-height: 10vh;
     background-color: aqua;
+    display: flex;
+    align-items: center;
+}
+
+.top_left{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 42%;
+    padding-left: 5%;
+}
+
+.top_center{
+    display: flex;
+    justify-content: center;
+    width: 16%;
+}
+
+.top_right{
+    display: flex;
+    justify-content: end;
+    width: 42%;
+    padding-right: 5%;
 }
