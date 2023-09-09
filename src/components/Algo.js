@@ -2,18 +2,22 @@ import * as React from "react";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
+import { theme_algo_context } from "../App";
+import colorTheme from "./colorSetup";
+
 
 export default function Algo() {
-    const [algo , setalgo] = React.useState(null);
+    const {algo , setAlgo , themeInd , setThemeInd} = React.useContext(theme_algo_context);
 
-    const handleChange = (event: SelectChangeEvent) => {
-        setalgo(event.target.value);
+    const handleChange = (event) => {
+        setAlgo(event.target.value);
+        console.log(algo);
     };
 
     return (
         <div>
-            <FormControl sx={{width : '20%'}} >
+            <FormControl sx={{width : '20%' , backgroundColor: colorTheme[themeInd].algo_box}} >
                 <InputLabel id="demo-simple-select-label">Algorithm</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
@@ -23,8 +27,8 @@ export default function Algo() {
                     onChange={handleChange}
                 >
                     <MenuItem value={1}>Ceaser-Cipher</MenuItem>
-                    <MenuItem value={2}>Trasnformation</MenuItem>
-                    <MenuItem value={3}>Thirty</MenuItem>
+                    <MenuItem value={2}>Monoalphabetic Substitution</MenuItem>
+                    <MenuItem value={3}>Vigenere-Cipher</MenuItem>
                 </Select>
             </FormControl>
         </div>

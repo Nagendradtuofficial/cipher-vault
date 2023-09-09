@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Header.css'
 import Avatar from '@mui/material/Avatar';
 import e_img from '../images/encryption_imp.png'
@@ -8,46 +8,50 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { theme_algo_context } from '../App';
+import colorTheme from './colorSetup';
 
 const Header = () => {
 
-  const [theme,settheme]=useState("");
+  const [val,setVal]=useState("");
+  const {themeInd,setThemeInd}=useContext(theme_algo_context);
 
   const handleChange = (event) => {
-    settheme(event.target.value);
+    setVal(event.target.value);
+    setThemeInd(event.target.value);
   };
 
   return (
-    <div className='header'>
-      <div className='top_left'>
-        <Avatar alt="Remy Sharp" src={e_img}  sx={{marginRight:'3%',width:'60px',height:'60px'}} />
-        <Typography sx={{fontFamily:'sans-serif',fontSize:'25px'}}>
-          Cipher-Vault
-        </Typography>
-      </div>
+    <div className='header' style={{backgroundColor:colorTheme[themeInd].header_col}}>
+        <a className='top_left' href= ''>
+            <Avatar alt="Remy Sharp" src={e_img}  sx={{marginRight:'3%',width:'60px',height:'60px',mixBlendMode: 'inherit'}} />
+            <Typography sx={{fontFamily:'Lora',fontSize:'25px',color:colorTheme[themeInd].txt_col}}>
+              Cipher-Vault
+            </Typography>
+        </a>
       <div className='top_center'>
-        <Link href="https://github.com/srijansaurabhjha" target='_blank' sx={{marginRight:'2%'}} >
+        <Link href="https://github.com/srijansaurabhjha" target='_blank' sx={{marginRight:'2%',color:colorTheme[themeInd].txt_col}} >
            <GitHubIcon sx={{fontSize:'35px'}}/>
         </Link>
         <Link href="https://github.com/Nagendradtuofficial" target='_blank' >
-           <GitHubIcon sx={{fontSize:'35px'}}/>
+           <GitHubIcon sx={{fontSize:'35px',color:colorTheme[themeInd].txt_col}}/>
         </Link>
       </div>
       <div className='top_right'>
-      <FormControl sx={{width:'50%'}}>
+      <FormControl sx={{width:'50%',backgroundColor:colorTheme[themeInd].theme_box}}>
         <InputLabel id="demo-simple-select-label">Theme</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={theme}
-          label="Age"
+          value={val}
+          // label="Age"
           onChange={handleChange}
         >
-           <MenuItem value={"Asthetic"}>Asthetic</MenuItem>
-           <MenuItem value={"Dark"}>Dark</MenuItem>
-           <MenuItem value={"Winter"}>Winter</MenuItem>
-           <MenuItem value={"Monkai"}>Monkai</MenuItem>
-           <MenuItem value={"Drakula"}>Drakula</MenuItem>
+           <MenuItem value={1}>Asthetic</MenuItem>
+           <MenuItem value={2}>Dark</MenuItem>
+           <MenuItem value={3}>Winter</MenuItem>
+           <MenuItem value={4}>Forest</MenuItem>
+           <MenuItem value={5}>Drakula</MenuItem>
         </Select>
       </FormControl>
       </div>
@@ -56,4 +60,3 @@ const Header = () => {
 }
 
 export default Header
-
