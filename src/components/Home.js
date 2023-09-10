@@ -86,21 +86,24 @@ const Home = () => {
             let p = "";
             let k = to_full(key);
 
-            for (let i = 0; i < text.length; i++) {
+            for (let i = 0; i < text.length; i++) 
+            {
                 var code = text.charCodeAt(i);
-
-                if (code >= 65 && code <= 65 + 25) {
+                var code2 = code ;
+                if (code >= 65 && code <= 65 + 25) 
+                {
                     code -= 65;
-                    var code2 = k.charCodeAt(2 * code);
+                    code2 = k.charCodeAt(2 * code);
                     console.log(code2);
                     if (code2 >= 97 && code2 <= 97 + 25) {
                         code2 -= 32;
                     }
                 }
 
-                else if (code >= 97 && code <= 97 + 25) {
+                else if (code >= 97 && code <= 97 + 25) 
+                {
                     code -= 97;
-                    var code2 = k.charCodeAt(2 * code);
+                    code2 = k.charCodeAt(2 * code);
                     console.log(code2);
                     if (code2 >= 65 && code2 <= 65 + 25) {
                         code2 += 32;
@@ -110,34 +113,35 @@ const Home = () => {
             }
             setcipher(p);
         }
-        else if (algo === 3) {
+        else if (algo === 3) 
+        {
             let p = "";
             let k = key;
-            while (k.length < text.length) {
+            while (k.length < text.length) 
+            {
                 k += key;
             }
-            console.log(key);
+            console.log(k);
             for (let i = 0; i < text.length; i++) {
                 var code = text.charCodeAt(i);
                 var code2 = k.charCodeAt(i);
 
-                if (code >= 65 && code <= 65 + 25) {
+                if (code2 >= 65 && code2 <= 65 + 26 - 1)
+                    code2 -= 65;
+                else
+                    code2 -= 97;
+
+                if (code >= 65 && code <= 65 + 25) 
+                {
                     code -= 65;
-                    if (code2 >= 65 && code2 <= 65 + 25)
-                        code2 -= 65;
-                    else
-                        code2 -= 97;
                     code += code2;
                     code %= 26;
                     code += 65;
                 }
 
-                if (code >= 97 && code <= 97 + 26 - 1) {
+                else if (code >= 97 && code <= 97 + 26 - 1) 
+                {
                     code -= 97;
-                    if (code2 >= 65 && code2 <= 65 + 26 - 1)
-                        code2 -= 65;
-                    else
-                        code2 -= 97;
                     code += code2;
                     code %= 26;
                     code += 97;
@@ -166,7 +170,7 @@ const Home = () => {
                     code += 65;
                 }
 
-                if (code >= 97 && code <= 97 + 26 - 1) {
+                else if (code >= 97 && code <= 97 + 26 - 1) {
                     code -= 97;
                     code += 26
                     code -= k;
@@ -186,8 +190,13 @@ const Home = () => {
                 if (code >= 65 && code <= 65 + 25) {
                     code -= 65;
                 }
-                if (code >= 97 && code <= 97 + 25) {
+                else if (code >= 97 && code <= 97 + 25) {
                     code -= 97;
+                }
+
+                else{
+                    p += String.fromCharCode(code);
+                    continue;
                 }
                 let j = 0;
                 while (j < 26) {
@@ -219,34 +228,36 @@ const Home = () => {
             }
             setcipher(p);
         }
-        else if (algo === 3) {
+        else if (algo === 3) 
+        {
             let p = "";
             let k = key;
-            while (k.length < text.length) {
+            while (k.length < text.length) 
+            {
                 k += key;
             }
-            for (var i = 0; i < text.length; i++) {
+            for (var i = 0; i < text.length; i++) 
+            {
                 var code = text.charCodeAt(i);
                 var code2 = k.charCodeAt(i);
+                if (code2 >= 65 && code2 <= 65 + 26 - 1)
+                    code2 -= 65;
+                else
+                    code2 -= 97;
 
-                if (code >= 65 && code <= 65 + 26 - 1) {
+                if (code >= 65 && code <= 65 + 26 - 1) 
+                {
                     code -= 65;
-                    if (code2 >= 65 && code2 <= 65 + 26 - 1)
-                        code2 -= 65;
-                    else
-                        code2 -= 97;
                     code -= code2;
+                    code += 26 ;
                     code %= 26;
                     code += 65;
                 }
 
                 if (code >= 97 && code <= 97 + 26 - 1) {
                     code -= 97;
-                    if (code2 >= 65 && code2 <= 65 + 26 - 1)
-                        code2 -= 65;
-                    else
-                        code2 -= 97;
                     code -= code2;
+                    code += 26 ;
                     code %= 26;
                     code += 97;
                 }
