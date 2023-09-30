@@ -29,6 +29,8 @@ export default function Algo() {
                     <MenuItem value={1}>Ceaser-Cipher</MenuItem>
                     <MenuItem value={2}>Monoalphabetic Substitution</MenuItem>
                     <MenuItem value={3}>Vigenere-Cipher</MenuItem>
+                    <MenuItem value={4}>AES</MenuItem>
+                    <MenuItem value={5}>DES</MenuItem>
                 </Select>
             </FormControl>
         </div>

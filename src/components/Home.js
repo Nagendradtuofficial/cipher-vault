@@ -8,6 +8,7 @@ import labels from "./labels";
 import colorTheme from './colorSetup';
 import { type } from '@testing-library/user-event/dist/type';
 import { Code } from '@mui/icons-material';
+import CryptoJS from "crypto-js";
 
 
 const Home = () => {
@@ -16,11 +17,11 @@ const Home = () => {
     const { key, setkey, themeInd, setThemeInd } = useContext(theme_algo_context);
     const { cipher, setcipher, algo } = useContext(theme_algo_context);
 
-    const isNumber = (a) => {
-        if (a >= '0' && a <= '9')
-            return true;
-        return false;
-    }
+    // const isNumber = (a) => {
+    //     if (a >= '0' && a <= '9')
+    //         return true;
+    //     return false;
+    // }
 
     const to_full = (a) => {
         const letters = new Map();
@@ -150,6 +151,24 @@ const Home = () => {
             }
             setcipher(p);
         }
+        else if(algo == 4)
+        {
+            let k = key ;
+            let p = CryptoJS.AES.encrypt(
+                JSON.stringify(text),
+                k
+            ).toString();
+            setcipher(p);
+        }
+        else if(algo == 5)
+        {
+            let k = key ;
+            let p = CryptoJS.DES.encrypt(
+                JSON.stringify(text),
+                k
+              ).toString();
+            setcipher(p);
+        }
         else {
             setcipher(text);
         }
@@ -265,6 +284,19 @@ const Home = () => {
                 p += String.fromCharCode(code);
             }
             setcipher(p);
+        }
+        else if(algo == 4)
+        {
+            const bytes = CryptoJS.AES.decrypt(text, key);
+            const p = bytes.toString(CryptoJS.enc.Utf8);
+            setcipher(p.substring(1,p.length-1));
+            
+        }
+        else if(algo == 5)
+        {
+            const bytes = CryptoJS.DES.decrypt(text, key);
+            const p = bytes.toString(CryptoJS.enc.Utf8);
+            setcipher(p.substring(1,p.length-1));
         }
         else {
             setcipher(text);
