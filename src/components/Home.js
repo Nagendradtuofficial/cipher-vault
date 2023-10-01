@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext , useState} from 'react'
 import './Home.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -6,17 +6,13 @@ import Algo from './Algo';
 import { theme_algo_context } from '../App';
 import labels from "./labels";
 import colorTheme from './colorSetup';
-import { type } from '@testing-library/user-event/dist/type';
-import { Code } from '@mui/icons-material';
 import CryptoJS from "crypto-js";
-
 
 const Home = () => {
 
     const { text, settext } = useContext(theme_algo_context);
     const { key, setkey, themeInd, setThemeInd } = useContext(theme_algo_context);
     const { cipher, setcipher, algo } = useContext(theme_algo_context);
-
     // const isNumber = (a) => {
     //     if (a >= '0' && a <= '9')
     //         return true;
@@ -298,7 +294,8 @@ const Home = () => {
             const p = bytes.toString(CryptoJS.enc.Utf8);
             setcipher(p.substring(1,p.length-1));
         }
-        else {
+        else 
+        {
             setcipher(text);
         }
     }
@@ -352,9 +349,10 @@ const Home = () => {
 
                 </div>
 
-                <div className='output' placeholder='Type your text here' style={{backgroundColor: colorTheme[themeInd].output_col , color: colorTheme[themeInd].input_txt_col}}>
-                    {cipher}
+                <div className='output' style={{backgroundColor: colorTheme[themeInd].output_col , color: colorTheme[themeInd].input_txt_col}}>
+                        {cipher}
                 </div>
+
             </div>
 
             <div className='bottom'>
